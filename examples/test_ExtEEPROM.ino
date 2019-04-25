@@ -30,12 +30,12 @@ void setup()
   Serial.begin(115200);                   // Initialise the Serial port
   while (!Serial) {}                      // Leonardo: wait for serial port to connect
   
-  //Wire.begin();                           // Initialise the I2C library
+  
   
   // default address of the device
   ExtEEPROM.setID(IDaddr);                // EEPROM ID address (default 0x50)
   
-  // clockFrequency:
+  // clockFrequency (option and here, it is set by the 'scanSpeed()' test):
   //      10    =>    10kHz       low
   //      100   =>    100kHz      [default]
   //      400   =>    400kHz      fast
