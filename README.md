@@ -1,4 +1,4 @@
-# I2C_ExtEEPROM
+# I2C_ExtEEPROM (Arduino)
 
 Read / write objects (structure, array, float...) into and from an external I2C EEPROM
 
