@@ -54,7 +54,7 @@ class I2C_ExtEEPROMClass
   public:
     I2C_ExtEEPROMClass();
     
-    void      setClock(uint16_t clockFrequency);
+    void      setClock(unsigned int clockFrequency);
     void      setID(byte addr_ID);
 
     // to work on 1 byte
