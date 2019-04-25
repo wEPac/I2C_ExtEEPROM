@@ -63,19 +63,19 @@ class I2C_ExtEEPROMClass
     void      check(unsigned int addr, byte data);
 
     // to 'get', 'put' and 'update' objects to and from EEPROM
-    template <typename T>       T     &get(int addr, T &value)
+    template <typename T>       T     &get(unsigned int addr, T &value)
     {
       byte* p = (byte*)(void*)&value;
       byte  i = sizeof(value);
       while(i--)  *p++ = read(addr++);
     };
-    template <typename T> const T     &put(int addr, const T &value)
+    template <typename T> const T     &put(unsigned int addr, const T &value)
     {
       const byte* p = (const byte*)(const void*)&value;
       byte        i = sizeof(value);
       while(i--)  write(addr++, *p++);
     };
-    template <typename T> const T     &update(int addr, const T &value)
+    template <typename T> const T     &update(unsigned int addr, const T &value)
     {
       const byte* p = (const byte*)(const void*)&value;
       byte        i = sizeof(value);
