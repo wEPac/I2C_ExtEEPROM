@@ -1,5 +1,7 @@
 /*
  * a test for I2C_ExtEEPROM
+ *      copy and paste the 2 files ""I2C_ExtEEPROM.h" and "I2C_ExtEEPROM.h",
+ *      into the same folder than this file "I2C_ExtEEPROM.ino"
  * 
  * perform: 
  *      - a scan for I2C bus to find devices
@@ -25,7 +27,8 @@
 #include <Wire.h>
 #include "I2C_ExtEEPROM.h"
 
-
+byte  IDaddr      = 0x57;                 // address of the device
+int   startAddr   = 256;
 
 struct Test   // Create a test structure
 {
@@ -34,8 +37,6 @@ struct Test   // Create a test structure
   uint8_t z;
 }     sValues     = { 5, 1.23483748, 0x08 };
 
-byte  IDaddr      = 0x57;                 // address of the device
-int   startAddr   = 256;
 
 
 void setup()
