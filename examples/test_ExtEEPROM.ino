@@ -27,27 +27,27 @@
 #include <Wire.h>
 #include "I2C_ExtEEPROM.h"
 
-byte  IDaddr      = 0x57;                 // address of the device
+byte  IDaddr      = 0x57;   // address of the device
 int   startAddr   = 256;
 
-struct Test   // Create a test structure
+struct Test                 // Create a test structure
 {
   int32_t x;
   float   y;
   uint8_t z;
-}     sValues     = { 5, 1.23483748, 0x08 };
+}     sValues     = { 1847483647, 1.23483748, 0x08 };
 
 
 
 void setup()
 {
-  Serial.begin(115200);                   // Initialise the Serial port
-  while (!Serial) {}                      // Leonardo: wait for serial port to connect
+  Serial.begin(115200);     // Initialise the Serial port
+  while (!Serial) {}        // Leonardo: wait for serial port to connect
 
 
 
   // default address of the device
-  ExtEEPROM.setID(IDaddr);                // EEPROM ID address (default 0x50)
+  ExtEEPROM.setID(IDaddr);  // EEPROM ID address (default 0x50)
 
   // clockFrequency (option and here, it is set by the 'scanSpeed()' test):
   //      10    =>    10kHz       low
