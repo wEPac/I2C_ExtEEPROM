@@ -91,18 +91,5 @@ class I2C_ExtEEPROMClass
 extern I2C_ExtEEPROMClass ExtEEPROM;
 
 
-/*
-template <class T> void I2C_ExtEEPROM_put(int addr, const T& value)
-{
-  const byte* p = (const byte*)(const void*)&value;
-  for (byte i = 0; i < sizeof(value); i++)    I2C_ExtEEPROM.write(addr++, *p++);
-}
-
-template <class T> void ExtEEPROM_get(int addr, T& value)
-{
-  byte* p = (byte*)(void*)&value;
-  for (byte i = 0; i < sizeof(value); i++)    *p++ = I2C_ExtEEPROM.read(addr++);
-}
-//*/
 
 #endif  // I2C_ExtEEPROM_h
