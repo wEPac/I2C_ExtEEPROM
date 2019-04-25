@@ -62,7 +62,7 @@ class I2C_ExtEEPROMClass
     void      write(int addr, byte data);
     void      check(int addr, byte data);
 
-    // to 'get', 'put' and 'update' objects to and from EEPROM
+    // to 'get', 'put' and 'update' objects into and from EEPROM
     template <typename T>       T     &get(int addr, T &value)
     {
       byte* p = (byte*)(void*)&value;
