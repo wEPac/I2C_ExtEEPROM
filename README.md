@@ -13,7 +13,7 @@ Basic settings:
 Work on a single byte:
  - `ExtEEPROM.read(unsigned int addr)`, return the byte from the EEPROM
  - `ExtEEPROM.write(unsigned int addr, byte data)`, write the byte 'data' into the EEPROM
- - `ExtEEPROM.check(unsigned int addr, byte data)`, same than 'write', but only if the byte into the EEPROM is different than data
+ - `ExtEEPROM.check(unsigned int addr, byte data)`, same than 'write', but only if the byte into the EEPROM is different
  
 Work on any objects (structure, array, float...):
  - `ExtEEPROM.get(int addr, object)`, read from the EEPROM to fill the object
