@@ -1,26 +1,26 @@
 /*
- * a test for I2C_ExtEEPROM
- *      copy and paste the 2 files ""I2C_ExtEEPROM.h" and "I2C_ExtEEPROM.h",
- *      into the same folder than this file "I2C_ExtEEPROM.ino"
- * 
- * perform: 
- *      - a scan for I2C bus to find devices
- *      - a speed test to set the clock at max speed
- *      - a test to write & read different object (structure, array, float...)
- *
- * adapt at your needs:
- *      - IDaddr, address of the device
- *      - startAddr, where to start to read write in the EEPROM
- *
- * I2C / TWI pins:
- *      Board            SDA        SCL
- *      ------------------------------------
- *      Uno, Ethernet    A4         A5
- *      Mega2560         20         21
- *      Leonardo         2          3
- *      Due              20, SDA1   21, SCL1
- *
- */
+   a test for I2C_ExtEEPROM
+        copy and paste the 2 files ""I2C_ExtEEPROM.h" and "I2C_ExtEEPROM.h",
+        into the same folder than this file "I2C_ExtEEPROM.ino"
+
+   perform:
+        - a scan for I2C bus to find devices
+        - a speed test to set the clock at max speed
+        - a test to write & read different object (structure, array, float...)
+
+   adapt at your needs:
+        - IDaddr, address of the device
+        - startAddr, where to start to read write in the EEPROM
+
+   I2C / TWI pins:
+        Board            SDA        SCL
+        ------------------------------------
+        Uno, Ethernet    A4         A5
+        Mega2560         20         21
+        Leonardo         2          3
+        Due              20, SDA1   21, SCL1
+
+*/
 
 
 
@@ -43,12 +43,12 @@ void setup()
 {
   Serial.begin(115200);                   // Initialise the Serial port
   while (!Serial) {}                      // Leonardo: wait for serial port to connect
-  
-  
-  
+
+
+
   // default address of the device
   ExtEEPROM.setID(IDaddr);                // EEPROM ID address (default 0x50)
-  
+
   // clockFrequency (option and here, it is set by the 'scanSpeed()' test):
   //      10    =>    10kHz       low
   //      100   =>    100kHz      [default]
@@ -70,52 +70,52 @@ void loop() {}
 
 void testEEPROM_R_W()
 {
-  Serial.println(); Serial.println(); Serial.println(); 
+  Serial.println(); Serial.println(); Serial.println();
   Serial.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
   Serial.println("Begin Read/Write test ...");
   ExtEEPROM.put(startAddr, sValues);    // Write the test structure to EEPROM
- 
+
   int32_t valueX;
   float   valueY;
   uint8_t valueZ;
- 
+
   Serial.println("==============================");
   Serial.println("Read the EEPROM values individually");
-  ExtEEPROM.get(startAddr + (uint32_t)&sValues.y - (uint32_t)&sValues, valueY);   // Read the EEPROM values individually
+  ExtEEPROM.get(startAddr + (uint32_t)&sValues.y - (uint32_t)&sValues, valueY);
   ExtEEPROM.get(startAddr + (uint32_t)&sValues.z - (uint32_t)&sValues, valueZ);
   ExtEEPROM.get(startAddr + (uint32_t)&sValues.x - (uint32_t)&sValues, valueX);
-  Serial.println(valueX);                                                         // Display the values
+  Serial.println(valueX);
   Serial.println(valueY, 6);
   Serial.println(valueZ);
-  
+
   Serial.println("==============================");
   Serial.println("Change the float value");
-  ExtEEPROM.put(startAddr + (uint32_t)&sValues.y - (uint32_t)&sValues, (float)3.35343); // Change the float value
-  ExtEEPROM.get(startAddr + (uint32_t)&sValues.y - (uint32_t)&sValues, valueY);         // Read the EEPROM values individually
+  ExtEEPROM.put(startAddr + (uint32_t)&sValues.y - (uint32_t)&sValues, (float)3.35343);
+  ExtEEPROM.get(startAddr + (uint32_t)&sValues.y - (uint32_t)&sValues, valueY);
   ExtEEPROM.get(startAddr + (uint32_t)&sValues.z - (uint32_t)&sValues, valueZ);
   ExtEEPROM.get(startAddr + (uint32_t)&sValues.x - (uint32_t)&sValues, valueX);
-  Serial.println(valueX);                                                               // Display the values again
+  Serial.println(valueX);
   Serial.println(valueY, 6);
   Serial.println(valueZ);
-  
+
   Serial.println("==============================");
   Serial.println("Read the full structure from EEPROM");
-  ExtEEPROM.get(startAddr, sValues);      // Read from EEPROM back to the test structure
-  Serial.println(sValues.x);              // Display the test structure
+  ExtEEPROM.get(startAddr, sValues);
+  Serial.println(sValues.x);
   Serial.println(sValues.y, 6);
   Serial.println(sValues.z);
-  
+
   Serial.println("==============================");
-  Serial.println("Read a word = 12456");
-  word w = 12456;
+  Serial.println("Read a word = 14598");
+  word w = 14598;
   ExtEEPROM.put(startAddr, w);
   word wBuff;
   ExtEEPROM.get(startAddr, wBuff);
   Serial.println(wBuff);
-  
+
   Serial.println("==============================");
   Serial.println("Read an array = {1,2,3,4,5,6}");
-  byte a[] = {1,2,3,4,5,6};
+  byte a[] = {1, 2, 3, 4, 5, 6};
   ExtEEPROM.put(startAddr, a);
   byte aBuff[sizeof(a)];
   ExtEEPROM.get(startAddr, aBuff);
@@ -123,7 +123,7 @@ void testEEPROM_R_W()
   {
     Serial.println(aBuff[n]);
   }
-  
+
   Serial.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
   Serial.println("End Read/Write test");
 }
@@ -132,13 +132,13 @@ void testEEPROM_R_W()
 
 void scanI2C()
 {
-  Serial.println(); Serial.println(); Serial.println(); 
+  Serial.println(); Serial.println(); Serial.println();
   Serial.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
   Serial.println("I2C scanner. Scanning ...");
   Serial.println("==============================");
 
   byte count = 0;
-  
+
   Wire.begin();
   for (byte i = 8; i < 120; i++)
   {
@@ -161,11 +161,11 @@ void scanI2C()
 
 void scanSpeed()
 {
-  Serial.println(); Serial.println(); Serial.println(); 
+  Serial.println(); Serial.println(); Serial.println();
   Serial.println("¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
   Serial.print("I2C Speed test for '0x"); Serial.print(IDaddr, HEX); Serial.println("' ...");
   Serial.println("==============================");
-  
+
   unsigned long speeds[]  = {3400, 1000, 400, 100, 10};
   byte          i         = sizeof(speeds) / 4;
   byte          speed_max = i;
@@ -174,8 +174,9 @@ void scanSpeed()
     Serial.print(" clock at ");
     Serial.print((speeds[i] < 100) ? " " : "");
     Serial.print((speeds[i] < 1000) ? " " : "");
-    Serial.print(speeds[i]); Serial.print("kHz : I2C "); 
-    
+    Serial.print(speeds[i]); Serial.print("kHz : I2C ");
+    byte success = false;
+
     Wire.setClock(speeds[i] * 1000);
     Wire.beginTransmission(IDaddr);
     if (Wire.endTransmission() == 0)
@@ -184,13 +185,13 @@ void scanSpeed()
       ExtEEPROM.put(startAddr, tag);
       if (tag == ExtEEPROM.read(startAddr))
       {
-        Serial.println("succeed");
+        success   = true;
         speed_max = i;
       }
-      else
-        Serial.println("failed");
     }
-    else Serial.println("failed");
+
+    if (success) Serial.println("succeed");
+    else         Serial.println("failed");
   }
   Serial.println();
   Serial.print("Set the clock at "); Serial.print(speeds[speed_max]); Serial.println("kHz");
