@@ -4,7 +4,7 @@ Read / write objects (structure, array, float...) into and from an external I2C 
 
 There is no checking here, the deal is to reduce code size.
 
-=============================================
+_____________
 
 Basic settings:
  - `ExtEEPROM.setClock(int clockFrequency)`, set the I2C clock (400 => 400kHz)
