@@ -15,7 +15,7 @@ Work on a single byte:
  - `ExtEEPROM.write(int addr, byte data)`, write the byte 'data' into the EEPROM
  - `ExtEEPROM.check(int addr, byte data)`, same than 'write', but only if the byte into the EEPROM is different
  
-Work on any objects (structure, array, float...):
+Work on any object (structure, array, float...):
  - `ExtEEPROM.get(int addr, object)`, read from the EEPROM to fill the object
  - `ExtEEPROM.put(int addr, const object)`, write into EEPROM the content of the object
  - `ExtEEPROM.update(int addr, const object)`, same than 'put', but only if the byte into the EEPROM is different
