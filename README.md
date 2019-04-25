@@ -1,6 +1,6 @@
 # I2C_ExtEEPROM (Arduino)
 
-Read / write objects (structure, array, float...) into and from an external I2C EEPROM
+Read / write objects (structure, array, float...) from / into an external I2C EEPROM
 
 There is no checking here, the deal is to reduce code size.
 
