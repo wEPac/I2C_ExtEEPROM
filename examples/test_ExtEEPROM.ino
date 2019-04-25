@@ -5,6 +5,19 @@
  *      - a scan for I2C bus to find devices
  *      - a speed test to set the clock at max speed
  *      - a test to write & read different object (structure, array, float...)
+ *
+ * adapt at your needs:
+ *      - IDaddr, address of the device
+ *      - startAddr, where to start to read write in the EEPROM
+ *
+ * I2C / TWI pins:
+ *      Board            SDA        SCL
+ *      ------------------------------------
+ *      Uno, Ethernet    A4         A5
+ *      Mega2560         20         21
+ *      Leonardo         2          3
+ *      Due              20, SDA1   21, SCL1
+ *
  */
 
 
