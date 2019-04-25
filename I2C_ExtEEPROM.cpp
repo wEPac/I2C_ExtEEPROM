@@ -61,7 +61,7 @@ I2C_ExtEEPROMClass::I2C_ExtEEPROMClass()
 //      400   =>    400kHz      fast
 //      1000  =>    1000kHz     fast+
 //      3400  =>    3400kHz     high speed (unavaible here, uint8_t)
-void I2C_ExtEEPROMClass::setClock(uint16_t clockFrequency)
+void I2C_ExtEEPROMClass::setClock(unsigned int clockFrequency)
 {
   Wire.setClock(clockFrequency * 1000);
   delay(10);
