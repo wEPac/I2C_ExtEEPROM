@@ -35,7 +35,7 @@ struct Test                 // Create a test structure
   int32_t x;
   float   y;
   uint8_t z;
-}     sValues     = { 1847483647, 1.23483748, 0x08 };
+}     sValues     = { -1847483647, 1.23483748, 0x08 };
 
 
 
