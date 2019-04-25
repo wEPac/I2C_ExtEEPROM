@@ -11,7 +11,7 @@ Basic settings:
  - `ExtEEPROM.setID(byte addr_ID)`, set the ID address of the device (by default, this is 0x50)
  
 Work on a single byte:
- - `ExtEEPROM.read(int addr)`, return the byte from the EEPROM
+ - `byte data = ExtEEPROM.read(int addr)`, return the byte from the EEPROM
  - `ExtEEPROM.write(int addr, byte data)`, write the byte 'data' into the EEPROM
  - `ExtEEPROM.check(int addr, byte data)`, same than 'write', but only if the byte into the EEPROM is different
  
