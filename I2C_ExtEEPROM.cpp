@@ -61,7 +61,7 @@ I2C_ExtEEPROMClass::I2C_ExtEEPROMClass()
 //      400   =>    400kHz      fast
 //      1000  =>    1000kHz     fast+
 //      3400  =>    3400kHz     high speed (unavaible here, uint8_t)
-void I2C_ExtEEPROMClass::setClock(unsigned int clockFrequency)
+void I2C_ExtEEPROMClass::setClock(int clockFrequency)
 {
   Wire.setClock(clockFrequency * 1000);
   delay(10);
@@ -77,14 +77,14 @@ void I2C_ExtEEPROMClass::setID(byte addr_ID)
 
 
 
-void I2C_ExtEEPROMClass::_set(unsigned int addr)
+void I2C_ExtEEPROMClass::_set(int addr)
 {
   Wire.beginTransmission(_addr_ID);
   Wire.write((int)(addr >> 8));   // MSB
   Wire.write((int)(addr & 0xFF)); // LSB
 }
 
-byte I2C_ExtEEPROMClass::read(unsigned int addr) 
+byte I2C_ExtEEPROMClass::read(int addr) 
 {
   byte data = 0xFF;
 
@@ -97,7 +97,7 @@ byte I2C_ExtEEPROMClass::read(unsigned int addr)
   return data;
 }
 
-void I2C_ExtEEPROMClass::write(unsigned int addr, byte data) 
+void I2C_ExtEEPROMClass::write(int addr, byte data) 
 { 
   _set(addr);
   Wire.write(data);
@@ -106,7 +106,7 @@ void I2C_ExtEEPROMClass::write(unsigned int addr, byte data)
   delay(5);
 }
 
-void I2C_ExtEEPROMClass::check(unsigned int addr, byte data)
+void I2C_ExtEEPROMClass::check(int addr, byte data)
 {
   if (data != read(addr)) write(addr, data);
 }
